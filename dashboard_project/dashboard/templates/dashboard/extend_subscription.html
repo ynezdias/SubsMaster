@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Extend Subscription</title>
+  <style>/* styles.css */
+
+    /* Global styles */
+    body {
+      background-color: #f2f2f2;
+      margin: 0;
+      padding: 0;
+      background-image: url('https://img.freepik.com/free-vector/gradient-abstract-wireframe-background_23-2149020364.jpg');
+      background-repeat: contain;
+      background-size: cover;
+      height:100vh
+    }
+    
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    
+    h1 {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    
+    form {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 5px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+    
+    .form-group {
+      margin-bottom: 15px;
+    }
+    
+    label {
+      display: block;
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+    
+    input[type="text"],
+    input[type="number"] {
+      width: 100%;
+      padding: 10px;
+      border-radius: 3px;
+      border: 1px solid #ccc;
+    }
+    
+    button[type="submit"] {
+      padding: 10px 20px;
+      background-color: #4CAF50;
+      color: #fff;
+      border: none;
+      border-radius: 3px;
+      cursor: pointer;
+    }
+    
+    button[type="submit"]:hover {
+      background-color: #45a049;
+    }
+    
+    </style>
+
+</head>
+<body>
+  <div class="container">
+    <h1>Extend Subscription</h1>
+    <form>
+      <div class="form-group">
+        <label for="username">User name:</label>
+        <input type="text" id="username" name="username">
+        </div>
+      <div class="form-group">
+        <label for="user-id">User ID:</label>
+        <input type="text" id="user-id" name="user-id">
+      </div>
+      <div class="form-group">
+        <label for="extension-days">Extension (in days):</label>
+        <input type="number" id="extension-days" name="extension-days">
+      </div>
+
+      <div class="form-group">
+        <button type="submit">Extend Subscription</button>
+      </div>
+    </form>
+  </div>
+</body>
+</html>

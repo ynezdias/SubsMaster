@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Inactive Users</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url('https://img.freepik.com/free-vector/gradient-abstract-wireframe-background_23-2149020364.jpg');
+            background-repeat: contain;
+            background-size: cover;
+            height: 100vh;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1000px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        h1 {
+            text-align: center;
+        }
+        
+        .data-container {
+            display: none;
+        }
+        
+        .active-data {
+            display: block;
+        }
+        
+        .data {
+            margin-top: 20px;
+        }
+        
+        .data table {
+            width: 100%;
+            table-layout: fixed;
+            border-collapse: collapse;
+        }
+        
+        .data th,
+        .data td {
+            padding: 8px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        
+        .data th:nth-child(3),
+        .data td:nth-child(3) {
+            width: 25%;
+        }
+        
+        .data th:nth-child(4),
+        .data td:nth-child(4) {
+            width: 25%;
+        }
+        
+        .data th:nth-child(5),
+        .data td:nth-child(5) {
+            width: 15%;
+        }
+        
+        .data th {
+            background-color: #f2f2f2;
+        }
+        
+        .data tr:hover {
+            background-color: #f5f5f5;
+        }
+        
+        .data tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+    </style>
+    <script>
+        function toggleData() {
+            var dataContainer = document.getElementById("inactiveData");
+            dataContainer.classList.toggle("active-data");
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>Inactive Users</h1>
+        <div id="inactiveData" class="data-container active-data">
+            <div class="data">
+                <table>
+                    <tr>
+                        <th>User Id</th>
+                        <th>Username</th>
+                        <th>Last Login</th>
+                        <th>Status</th>
+                    </tr>
+                    {% for user in users %}
+                        <tr>
+                            <td>{{ user.user_id }}</td>
+                            <td>{{ user.username }}</td>
+                            <td>{{ user.last_login }}</td>
+                            <td>{{ user.status }}</td>
+                        </tr>
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

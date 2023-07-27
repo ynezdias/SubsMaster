@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url('https://img.freepik.com/free-vector/gradient-abstract-wireframe-background_23-2149020364.jpg');
+            background-repeat: contain;
+            background-size: cover;
+            height: 100vh;
+        }
+
+        .container {
+            width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #f0f0f0;
+            border: 1px solid #ccc;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        li {
+            display: inline-block;
+            margin-right: 10px;
+        }
+
+        li a {
+            text-decoration: none;
+            color: #333;
+            padding: 5px;
+        }
+
+        li a:hover {
+            color: #ff00ff;
+        }
+
+        .active {
+            font-weight: bold;
+        }
+
+        .count {
+            display: inline-block;
+            margin-left: 5px;
+            font-size: 14px;
+            background-color: #333;
+            color: #fff;
+            padding: 2px 5px;
+            border-radius: 50%;
+        }
+
+        .content {
+            margin-top: 20px;
+        }
+
+        .user-details {
+            margin-bottom: 10px;
+            border-bottom: 1px solid #ccc;
+            padding-bottom: 5px;
+        }
+
+        .user-details a {
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+        }
+
+        .count {
+            display: inline-block;
+            margin-left: 5px;
+            font-size: 14px;
+            background-color: #333;
+            color: #fff;
+            padding: 2px 5px;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Dashboard</h1>
+        <ul>
+            <li><a class="active" href="#">Dashboard</a></li>
+            <li><a href="{% url 'active_users' %}" onclick="toggleData()">Active Users</a></li>
+            <li><a href="{% url 'inactive_users' %}" onclick="toggleData()">Inactive Users</a></li>
+            <li><a href="{% url 'expiring_soon' %}" onclick="toggleData()">Expiring Users</a></li>
+            <li><a href="{% url 'expired_users' %}" onclick="toggleData()">Expired Users</a></li>
+        </ul>
+
+        <div class="content">
+            <div class="user-details">
+                <a href=>Active Users</a>
+                <span class="count">{{ active_users_count }}</span>
+            </div>
+            
+            <div class="user-details">
+                <a href=>Inactive Users</a>
+                <span class="count">{{ inactive_users_count }}</span>
+            </div>
+            
+            <div class="user-details">
+                <a href=>Expiring Soon</a>
+                <span class="count">{{ expiring_users_count }}</span>
+            </div>
+
+            <div class="user-details">
+                <a href=>Expired Users</a>
+                <span class="count">{{ expired_users_count }}</span>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{% block title %}{% endblock %}</title>
+    <!-- Include any CSS or JavaScript files -->
+    <!-- Add any necessary meta tags, favicon, etc. -->
+</head>
+<body>
+    <header>
+        <!-- Include your website logo, site name, etc. -->
+        <!-- Add navigation menu -->
+    </header>
+
+    <div id="content">
+        {% block content %}
+        <!-- The content of specific pages will be inserted here -->
+        {% endblock %}
+    </div>
+
+    <footer>
+        <!-- Footer content -->
+    </footer>
+
+    <!-- Include any JavaScript files at the end of the body -->
+    <script src="path/to/javascript.js"></script>
+</body>
+</html>

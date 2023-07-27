@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Active Users</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url('https://img.freepik.com/free-vector/gradient-abstract-wireframe-background_23-2149020364.jpg');
+            background-repeat: contain;
+            background-size: cover;
+            height: 100vh;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1000px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        h1 {
+            text-align: center;
+        }
+        
+        .data-container {
+            display: none;
+        }
+        
+        .active-data {
+            display: block;
+        }
+        
+        .data {
+            margin-top: 20px;
+        }
+        
+        .data table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        .data th,
+        .data td {
+            padding: 8px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .data th {
+            background-color: #f2f2f2;
+        }
+        
+        .data tr:hover {
+            background-color: #f5f5f5;
+        }
+        
+        .data tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+    </style>
+    <script>
+        function toggleData() {
+            var dataContainer = document.getElementById("activeData");
+            dataContainer.classList.toggle("active-data");
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>Active Users</h1>
+        <div id="activeData" class="data-container active-data">
+            <div class="data">
+                <table>
+                    <tr>
+                        <th>User Id</th>
+                        <th>Username</th>
+                        <th>Activation Date</th>
+                        <th>Expiry Date</th>
+                        <th>Status</th>
+                    </tr>
+                    {% for user in users %}
+                        <tr>
+                            <td>{{ user.user_id }}</td>
+                            <td>{{ user.username }}</td>
+                            <td>{{ user.activation_date }}</td>
+                            <td>{{ user.expiry_date }}</td>
+                            <td>{{ user.status }}</td>
+                        </tr>
+                    {% endfor %}
+
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
