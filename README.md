@@ -1,7 +1,6 @@
 # SubsMaster
 Subcription Manager
-Django-Email-Sender
-Send email from Gmail Id in Django using HTML Template
+Mnaging Subscriptions of Users 
 
 Pre-Requisites
 Python 3.8
@@ -16,9 +15,9 @@ Run pipenv shell. Creates virtual env
 
 Run pipenv install. Installs dependencies from the PipFile and creates PipFile.lock
 
-Run python email_project/manage.py runserver to start the server
+Run python dashboard_project/manage.py runserver to start the server
 
-Open http://127.0.0.1:8000/api/send-mail to start
+Open http://127.0.0.1:8000/dashboard to start
 
 USE THE FOLLOWING STEPS
 
