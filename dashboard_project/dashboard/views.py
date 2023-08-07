@@ -33,7 +33,7 @@ def dashboard(request):
         'expired_users_count': expired_users_count,
     }
 
-    return render(request, 'dashboard/dashboard.html', context)
+    return render(request, 'dashboard/dashboard.html' ,context)
 
 
 def active_users(request):
@@ -97,22 +97,28 @@ def expiring_soon(request):
     return render(request, 'dashboard/expiring_soon.html', context)
  
 
-def extend_subscription(request):
+def extend_subscription(request, user_id):
     if request.method == 'POST':
-        user_id = request.POST.get('user_id')
+        # Get the form data from the POST request
         months = int(request.POST.get('months'))
         years = int(request.POST.get('years'))
         
         user = get_object_or_404(Usermaster, user_id=user_id)
         expiry_date = datetime.strptime(user.expiry_date, '%d/%m/%y').date()
+        
+        # Calculate the new expiry date based on the selected months and years
         total_days = 30 * months + 365 * years
         new_expiry_date = expiry_date + timedelta(days=total_days)
+        
+        # Update the user's expiry date and save the changes
         user.expiry_date = new_expiry_date.strftime('%d/%m/%y')
         user.save()
         
-        return redirect('expiring_soon')
+        return redirect('expiring_soon')  # Redirect to the appropriate page after extension
 
-    return render(request, 'extend_subscription.html')
+    # Render the extend_subscription.html template
+    context = {'user_id': user_id}
+    return render(request, 'dashboard/extend_subscription.html', context)
 
 
 
@@ -136,16 +142,6 @@ def expired_users(request):
     return render(request, 'dashboard/expired_users.html', context)
 
 
-'''def activate_deactivate_user(request, user_id):
-    user = get_object_or_404(Usermaster, user_id=user_id)
-    user.is_active = not user.is_active
-    if user.is_active:
-        user.activation_date = date.today()  # Set activation date to today's date
-    else:
-        user.activation_date = None  # Reset activation date if deactivated
-    user.save()
-    return JsonResponse({'status': 'success', 'activation_date': user.activation_date.strftime('%d/%m/%Y') if user.activation_date else None})'''
-
 def activate_deactivate_user(request, user_id):
     user = get_object_or_404(Usermaster, user_id=user_id)
     user.is_active = not user.is_active
@@ -164,7 +160,12 @@ def activate_deactivate_user(request, user_id):
         'activation_date': user.activation_date.strftime('%d/%m/%Y') if user.activation_date else None,
         'is_active': is_active_display  # Display 'Yes' or 'No' in the JSON response
     })
-'''   
+
+
+
+''' 
+
+
 def expired_users(request):
     today = timezone.now().date()
     expired_users = Usermaster.objects.filter(expiry_date__lte=today)

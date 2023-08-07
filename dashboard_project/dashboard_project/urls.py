@@ -1,32 +1,3 @@
-"""
-URL configuration for dashboard_project project.
-
-The `urlpatterns` list routes URLs to views. For more information please see:
-    https://docs.djangoproject.com/en/4.2/topics/http/urls/
-Examples:
-Function views
-    1. Add an import:  from my_app import views
-    2. Add a URL to urlpatterns:  path('', views.home, name='home')
-Class-based views
-    1. Add an import:  from other_app.views import Home
-    2. Add a URL to urlpatterns:  path('', Home.as_view(), name='home')
-Including another URLconf
-    1. Import the include() function: from django.urls import include, path
-    2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
-"""
-'''
-from django.contrib import admin
-from django.urls import path
-from dashboard.views import DashboardView
-from . import views
-
-app_name = 'dashboard'
-
-urlpatterns = [
-    path('dashboard/', DashboardView.as_view(), name='dashboard'),
-    path('example/', views.example_view, name='url_name'),
-    path('admin/', admin.site.urls),
-]'''
 
 from django.urls import path
 from dashboard import views
@@ -45,6 +16,7 @@ urlpatterns = [
     path('dashboard/inactive-users/', views.inactive_users, name='inactive_users'),
     path('dashboard/expired-users/', views.expired_users, name='expired_users'),
     path('extend-subscription/', views.extend_subscription, name='extend_subscription'),
+    path('extend_subscription/<str:user_id>/', views.extend_subscription, name='extend_subscription'),
     #path('dashboard/extend_subscription/', views.extend_subscription, name='extend_subscription'),
     #path('dashboard/extend-subscription/<int:user_id>/', views.extend_subscription, name='extend_subscription'),
     path('toggle_user_status/<int:user_id>/', views.activate_deactivate_user, name='toggle_user_status'),
