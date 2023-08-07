@@ -1,4 +1,4 @@
-
+from django.contrib import admin
 from django.urls import path
 from dashboard import views
 from django.urls import path
@@ -10,7 +10,7 @@ from django.contrib import admin
 app_name = 'dashboard'
 
 urlpatterns = [
-    path('admin/',admin.site.urls),
+    path('admin/', admin.site.urls),
     path('dashboard/', views.dashboard, name='dashboard'),
     path('dashboard/active-users/', views.active_users, name='active_users'),
     #path('active-user/', views.active_users, name='active_users'),
