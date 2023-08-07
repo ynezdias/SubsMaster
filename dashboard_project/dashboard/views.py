@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.utils import timezone
-from .models import Usermaster
+from .models import Usermaster,Subscription
 from django.shortcuts import render, get_object_or_404
 from datetime import datetime
 from django.http import HttpResponse
@@ -161,6 +161,10 @@ def activate_deactivate_user(request, user_id):
         'is_active': is_active_display  # Display 'Yes' or 'No' in the JSON response
     })
 
+
+def temp_view(request):
+    
+    pass
 
 
 ''' 

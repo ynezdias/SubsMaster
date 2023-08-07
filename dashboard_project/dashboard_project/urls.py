@@ -5,10 +5,12 @@ from django.urls import path
 #from .views import active_user
 from dashboard.views import active_users
 #from . import views
+from django.contrib import admin
 
 app_name = 'dashboard'
 
 urlpatterns = [
+    path('admin/',admin.site.urls),
     path('dashboard/', views.dashboard, name='dashboard'),
     path('dashboard/active-users/', views.active_users, name='active_users'),
     #path('active-user/', views.active_users, name='active_users'),
