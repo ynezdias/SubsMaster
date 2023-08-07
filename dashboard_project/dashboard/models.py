@@ -23,7 +23,7 @@ class Usermaster(models.Model):
 
 
 class Subscription(models.Model):
-    # fields...
+    
     productname = models.CharField(max_length=50)
     user = models.ForeignKey(Usermaster, on_delete=models.CASCADE)
     #act_date = models.OneToOneField(Usermaster,on_delete=models.CASCADE)
