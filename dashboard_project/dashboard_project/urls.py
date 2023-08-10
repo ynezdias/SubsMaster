@@ -21,10 +21,25 @@ urlpatterns = [
     path('extend_subscription/<str:user_id>/', views.extend_subscription, name='extend_subscription'),
     #path('dashboard/extend_subscription/', views.extend_subscription, name='extend_subscription'),
     #path('dashboard/extend-subscription/<int:user_id>/', views.extend_subscription, name='extend_subscription'),
-    path('toggle_user_status/<int:user_id>/', views.activate_deactivate_user, name='toggle_user_status'),
+    path('activate_deactivate_user/<int:user_id>/', views.activate_deactivate_user, name='activate_deactivate_user'),
+    #path('toggle_user_status/<int:user_id>/', views.activate_deactivate_user, name='toggle_user_status'),
     #path('dashboard/toggle_user_status/<int:user_id>/', views.activate_deactivate_user, name='toggle_user_status'),
     #path('dashboard/activate-deactivate-user/<int:user_id>/', views.activate_deactivate_user, name='activate_deactivate_user'),
+    
 ]
+
+'''urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('dashboard/', views.dashboard, name='dashboard'),
+    path('dashboard/active-users/', views.active_users, name='active_users'),
+    path('dashboard/expiring-soon/', views.expiring_soon, name='expiring_soon'),
+    path('dashboard/inactive-users/', views.inactive_users, name='inactive_users'),
+    path('dashboard/expired-users/', views.expired_users, name='expired_users'),
+    path('extend-subscription/', views.extend_subscription, name='extend_subscription'),
+    path('extend-subscription/<str:user_id>/', views.extend_subscription, name='extend_subscription'),
+    path('dashboard/activate-deactivate-user/<int:user_id>/', views.activate_deactivate_user, name='activate_deactivate_user'),
+]
+'''
 
 '''
 from django.contrib import admin

@@ -46,7 +46,7 @@ def active_users(request):
             'user_id': user.user_id,
             'username': user.username,
             'activation_date': user.activation_date,
-            'expiry_date': expiry_date,
+            'expiry_date': user.expiry_date,
             'status': user.status,
         })
     context = {
@@ -86,7 +86,7 @@ def expiring_soon(request):
                 'f_name': user.f_name,
                 'l_name': user.l_name,
                 'user_id': user.user_id,
-                'expiry_date': expiry_date,
+                'expiry_date': user.expiry_date,
                 'last_login': user.last_login,
             })
 
@@ -132,7 +132,7 @@ def expired_users(request):
             users.append({
                 'user_id': user.user_id,
                 'username': user.username,
-                'expiry_date': expiry_date,
+                'expiry_date': user.expiry_date,
                 'is_active': user.is_active,
             })
     context = {
@@ -140,6 +140,7 @@ def expired_users(request):
         'menu': 'Expired Users',
     }
     return render(request, 'dashboard/expired_users.html', context)
+
 
 
 def activate_deactivate_user(request, user_id):
@@ -153,11 +154,13 @@ def activate_deactivate_user(request, user_id):
 
     # Convert the is_active field to 'Yes' or 'No' before creating the JSON response
     is_active_display = 'Yes' if user.is_active else 'No'
-    #print(is_active_display)
+    print(is_active_display)
+
+    activation_date_formatted = user.activation_date.strftime('%d/%m/%Y') if user.activation_date else None
 
     return JsonResponse({
         'status': 'success',
-        'activation_date': user.activation_date.strftime('%d/%m/%Y') if user.activation_date else None,
+        'activation_date': activation_date_formatted,
         'is_active': is_active_display  # Display 'Yes' or 'No' in the JSON response
     })
 

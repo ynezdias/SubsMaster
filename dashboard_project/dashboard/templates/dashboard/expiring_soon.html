@@ -221,7 +221,7 @@
                         <th>Last Name</th>
                         <th>Expiry Date</th>
                         <th>Action</th>
-                        <th>Extension</th>
+
                     </tr>
                     {% for user in users %}
                         <tr>
@@ -230,15 +230,7 @@
                             <td>{{ user.f_name }}</td>
                             <td>{{ user.l_name }}</td>
                             <td>{{ user.expiry_date }}</td>
-                            <td>
-                                <button data-user-id="{{ user.user_id }}" onclick="toggleStatus('{{ user.user_id }}', '{{ user.is_active }}')">
-                                    {% if user.is_active %}
-                                        Deactivate
-                                    {% else %}
-                                        Activate
-                                    {% endif %}
-                                </button>
-                            </td>
+
                             <td>
                                 <a class="extend-button" href="/extend_subscription/{{ user.user_id }}">Extend Subscription</a>
                             </td>

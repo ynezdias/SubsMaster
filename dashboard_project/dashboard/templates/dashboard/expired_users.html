@@ -254,7 +254,7 @@
                             <td>{{ user.username }}</td>
                             <td>{{ user.expiry_date }}</td>
                             <td>
-                                <button data-user-id="{{ user.user_id }}" onclick="toggleStatus('{{ user.user_id }}', '{{ user.is_active }}')">
+                                <button data-user-id="{{ user.user_id }}" data-is-active="{{ user.is_active }}" onclick="toggleStatus('{{ user.user_id }}', '{{ user.is_active }}')">
                                     {% if user.is_active %}
                                         Deactivate
                                     {% else %}
@@ -274,7 +274,32 @@
 
     <script>
         function toggleStatus(userId, isActive) {
-            // Your toggleStatus function
+            const xhr = new XMLHttpRequest();
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState === XMLHttpRequest.DONE) {
+                    if (xhr.status === 200) {
+                        const button = document.querySelector(`button[data-user-id="${userId}"]`);
+                        if (isActive === 'True') {
+                            button.innerText = 'Activate';
+                        } else {
+                            button.innerText = 'Deactivate';
+                        }
+                        button.classList.toggle('active');
+                    } else {
+                        console.error('Failed to toggle user status');
+                    }
+                }
+            };
+            xhr.open('POST', `/activate_deactivate_user/${userId}/`);  // Update the URL to your endpoint
+            xhr.setRequestHeader('X-CSRFToken', getCookie('csrftoken'));
+            xhr.send();
+        }
+    
+        // Function to get CSRF token
+        function getCookie(name) {
+            const value = `; ${document.cookie}`;
+            const parts = value.split(`; ${name}=`);
+            if (parts.length === 2) return parts.pop().split(';').shift();
         }
     </script>
 </body>
