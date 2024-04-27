@@ -43,3 +43,7 @@ pipenv install
 
 8.Run development server
 ./manage.py runserver
+
+
+ScreenShot
+![Screenshot 2023-08-06 103953](https://github.com/ynezdias/SubsMaster/assets/88530255/3c34f8c1-95f4-433a-9eed-9fcb9232a41e)
