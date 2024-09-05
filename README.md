@@ -1,6 +1,5 @@
 # SubsMaster
-Subcription Manager
-Mnaging Subscriptions of Users 
+SubsMaster is a subscription management platform that provides real-time updates and tracking of subscribers' activities. The platform allows users to manage various subscriptions seamlessly, offering features such as subscription renewal, cancellation, and modification. With real-time tracking, administrators can monitor subscriber interactions, identify active or inactive users, and respond instantly to changes in subscription status. SubsMaster aims to simplify the subscription management process, enhancing user experience with instant updates and streamlined controls.
 
 Pre-Requisites
 Python 3.8
